@@ -1,25 +1,53 @@
 def join_ingredients(src)
-  # Given an Array of 2-element Arrays ( [ [food1, food2], [food3, # food4]....[foodN, foodM]]):
-  #
-  # Build a new Array that contains strings where each pair of foods is
-  # inserted into this template:
-  #
-  # "I love (inner array element 0) and (inner array element 1) on my pizza""
-  # As such, there should be a new String for each inner array, or pair
+  
+ingredients = []  
+row = 0 
+while row < src.count 
+  column = 0
+  while column < src[row].count
+      ingredients<<( "I love " +src[row][column]+ " and "+src[row][column + 1]+ " on my pizza")
+      column += 2
+    end
+  row += 1
 end
 
+
+ingredients
+end
 def find_greater_pair(src)
-  # src will be an array of [ [number1, number2], ... [numberN, numberM] ]
-  # Produce a new Array that contains the larger number of each of the pairs
-  # that are in the inner Arrays
+
+larger = []  
+row = 0 
+while row < src.count 
+  column = 0
+  while column < src[row].count
+      if src[row][column] > src[row][column +1]
+        larger<< src[row][column]
+      else
+        larger<< src[row][column + 1]
+      end
+      column += 2
+    end
+  row += 1
+end
+
+
+larger
 end
 
 def total_even_pairs(src)
-  # src will be an array of [ [number1, number2], ... [numberN, numberM] ]
-  # if both numbers in the pair are even, then add both those numbers to the
-  # total
-  #
-  # As a reminder any number % 2 will return 0 or 1. If the result is 0, then
-  # the number was even. Review the operator documentation if you've forgotten
-  # this!
+
+total = 0 
+row = 0 
+while row < src.count 
+  column = 0
+  while column < src[row].count
+      if ( src[row][column] % 2 == 0 && src[row][column + 1] % 2 == 0) 
+        total += ( src[row][column] + src[row][column +1] )
+      end
+      column += 2
+    end
+  row += 1
+end
+total
 end
